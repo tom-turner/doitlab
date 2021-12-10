@@ -1,0 +1,73 @@
+<div id="wrapper">
+	<div id="main">
+		<div class="text-xl font-mono max-w-lg">
+
+			<div id="part-0" class="w-full hidden">
+				<img src="assets/images/image03.png" alt="" />
+				<button class="bg-black px-4 py-2 rounded-full text-white" onclick="next()">Start</button>
+			</div>
+
+			<form id="part-1" onsubmit="submitForm(this)" class="hidden space-y-2 flex-col flex mx-auto w-full";>
+				<h3>One</h3>
+				<input type="text" name="One" class="border rounded p-4">
+				<input type="submit" value="Next" class="bg-black px-4 py-2 rounded-full text-white">
+			</form>
+
+			<form id="part-2" onsubmit="submitForm(this)" class="hidden space-y-2 flex-col flex mx-auto w-full">
+				<h3>Two</h3>
+				<input type="text" name="Two" class="border rounded p-4">
+				<input type="hidden" name="done" value="true">
+				<input type="submit" value="Submit" class="bg-black px-4 py-2 rounded-full text-white">
+			</form>
+
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	let session = localStorage.getItem('session')
+	let progress = localStorage.getItem('progress')
+	
+	if(!session) {
+		session = Math.random().toString().slice(-10)
+		localStorage.setItem('session', session)
+	}
+	
+	if(!progress) {
+		progress = 0
+		localStorage.setItem('progress', progress)
+	}
+
+	document.getElementById(`part-${progress}`).classList.remove('hidden')
+
+	let next = () => {
+		document.getElementById(`part-${progress}`).classList.add('hidden'); 
+		document.getElementById(`part-${Number(progress)+1}`).classList.remove('hidden')
+		progress++
+		localStorage.setItem('progress', progress)
+	}
+
+	let submitForm = async (form) => {
+		let formData = new FormData(form)
+		formData.append('session', session)
+
+		var response = await fetch("/submit" , {
+          method: 'POST',
+          headers: {
+          'Content-Type' : 'application/json'
+          },
+          body: JSON.stringify(Object.fromEntries(formData))
+        });
+
+        var body = await response.json();
+        if(body.done){
+        	localStorage.clear()
+        	return // location.href = "/"
+        }
+        if(body.success){
+        	return next()
+        }
+	}
+
+
+</script>
