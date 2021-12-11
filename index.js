@@ -38,6 +38,7 @@ let isAuthenticated = (req, res, next) => {
 }
 
 app.get('/', (req, res) => {
+	console.log('home')
 	res.render('index.ejs', { title : 'Do It LAB - A Do It LAB is a space for you to prototype physical products.'});
 });
 
@@ -46,6 +47,7 @@ app.get('/suggestions', (req, res) => {
 });
 
 app.get('/welcome', (req, res) => {
+	console.log('new welcome')
  	res.render('form.ejs', { title : 'Let us know about you'});
 });
 
@@ -63,7 +65,7 @@ app.get('/*', (req, res) => {
 
 
 app.post('/submit', async (req, res) => {
-
+	console.log('new submit', req.body)
 	db.set(req.body.session, req.body)
 
 	if(req.body.done){
@@ -80,6 +82,7 @@ app.post('/csv', isAuthenticated, async (req, res) => {
 })
 
 app.post('/session', (req, res) => {
+	console.log('admin logged on')
 	req.session.auth = req.body.password
 	res.redirect('/admin')
 })
