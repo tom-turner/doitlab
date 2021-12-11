@@ -7,7 +7,9 @@ const path = require("path");
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser')
 const Database = require('./lib/database')
-const db = new Database('db/database.csv')
+const db = new Database('db/database.json')
+const CSV = require('./lib/csv')
+const csv = new CSV()
 
 let adminAuth = 'password'
 
@@ -39,12 +41,12 @@ app.get('/suggestions', (req, res) => {
   	res.redirect('https://airtable.com/shrL4dqHAP01zqy1y');
 });
 
-app.get('/qrcode', (req, res) => {
+app.get('/welcome', (req, res) => {
  	res.render('form.ejs', { title : 'Let us know about you'});
 });
 
 app.get('/admin', isAuthenticated, (req, res) => {
- 	res.render('admin.ejs', { title : 'Admin'});
+ 	res.render('admin.ejs', { title : 'Admin' });
 });
 
 app.get('/login', (req, res) => {
@@ -52,12 +54,20 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/submit', async (req, res) => {
-	console.log('form submited', req.body)
+
+	db.set(req.body.session, req.body)
 
 	if(req.body.done){
 		return res.json({ done : true })
 	}
 	return res.json({ success : true })
+})
+
+app.post('/csv', isAuthenticated, async (req, res) => {
+	let database = db.readFile()
+	let file = await csv.make(database)
+	res.download(file)
+	return
 })
 
 app.post('/session', (req, res) => {

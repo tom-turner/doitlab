@@ -4,7 +4,9 @@
 
 			<div id="part-0" class="w-full hidden">
 				<img src="assets/images/image03.png" alt="" />
-				<button class="bg-black px-4 py-2 rounded-full text-white" onclick="next()">Start</button>
+				<form onsubmit="submitForm(this)" class="space-y-2 flex-col flex mx-auto w-full  max-w-xs">
+					<input type="submit" value="Start" class="bg-green-500 px-4 py-2 rounded-full text-white cursor-pointer ">
+				</form>
 			</div>
 
 			<form id="part-1" onsubmit="submitForm(this)" class="hidden space-y-2 flex-col flex mx-auto w-full  max-w-xl">
@@ -12,26 +14,26 @@
 
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2"> Hacking at Hardware</p>
-						<input type="radio" name="type" value="hardware" class="my-auto" >
+						<input type="radio" name="interest" value="hardware" class="my-auto" >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2">Writing Software</p>
-						<input type="radio" name="type" value="software" class="my-auto" >
+						<input type="radio" name="interest" value="software" class="my-auto" >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2"> Making Friends</p>
-						<input type="radio" name="type" value="friends" class="my-auto" >
+						<input type="radio" name="interest" value="friends" class="my-auto" >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2">Gettin' Work Done!</p>
-						<input type="radio" name="type" value="productivity" class="my-auto" >
+						<input type="radio" name="interest" value="productivity" class="my-auto" >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2">All Of The Above</p>
-						<input type="radio" name="type" value="all" class="my-auto" >
+						<input type="radio" name="interest" value="all" class="my-auto" >
 					</label>
 					
-				<input type="submit" value="Next" class="bg-black px-4 py-2 rounded-full text-white cursor-pointer ">
+				<input type="submit" value="Next" class="bg-green-500 px-4 py-2 rounded-full text-white cursor-pointer ">
 				<a onclick="back()" class="underline text-black cursor-pointer text-sm"> Back </a>
 			</form>
 
@@ -40,27 +42,27 @@
 					
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2"> Total Beginner </p>
-						<input type="radio" name="type" value="Beginner" class="my-auto" >
+						<input type="radio" name="experience" value="Beginner" class="my-auto" >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2"> Casual Hobbiest Hacker </p>
-						<input type="radio" name="type" value="Hobbiest" class="my-auto" >
+						<input type="radio" name="experience" value="Hobbiest" class="my-auto" >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2">SME, Entreprenure or  Startup</p>
-						<input type="radio" name="type" value="entreprenure" class="my-auto" >
+						<input type="radio" name="experience" value="entreprenure" class="my-auto" >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2">Big Corp Limited</p>
-						<input type="radio" name="type" value="entreprenure" class="my-auto" >
+						<input type="radio" name="experience" value="entreprenure" class="my-auto" >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2">Serious Developer ~/. </p>
-						<input type="radio" name="type" value="developer" class="my-auto" >
+						<input type="radio" name="experience" value="developer" class="my-auto" >
 					</label> 
 				
 				
-				<input type="submit" value="Next" class="bg-black px-4 py-2 rounded-full text-white cursor-pointer">
+				<input type="submit" value="Next" class="bg-green-500 px-4 py-2 rounded-full text-white cursor-pointer">
 				<a onclick="back()" class="underline text-black cursor-pointer text-sm"> Back </a>
 			</form>
 
@@ -69,26 +71,26 @@
 					
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2"> 3D Printer </p>
-						<input type="radio" name="type" value="Beginner" class="my-auto" >
+						<input type="radio" name="tool" value="3d printer" class="my-auto" >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2"> Lazer Cutter </p>
-						<input type="radio" name="type" value="Hobbiest" class="my-auto" >
+						<input type="radio" name="tool" value="lazer cutter" class="my-auto" >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2">Epic Gaming Rig</p>
-						<input type="radio" name="type" value="entreprenure" class="my-auto" >
+						<input type="radio" name="tool" value="gaming rig" class="my-auto" >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2">Productivity Workstation</p>
-						<input type="radio" name="type" value="developer" class="my-auto" >
+						<input type="radio" name="tool" value="workstation" class="my-auto" >
 					</label> 
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2">Electronics Lab</p>
-						<input type="radio" name="type" value="developer" class="my-auto" >
+						<input type="radio" name="tool" value="electronics" class="my-auto" >
 					</label> 
 				
-				<input type="submit" value="Next" class="bg-black px-4 py-2 rounded-full text-white cursor-pointer">
+				<input type="submit" value="Next" class="bg-green-500 px-4 py-2 rounded-full text-white cursor-pointer">
 				<a onclick="back()" class="underline text-black cursor-pointer text-sm"> Back </a>
 			</form>
 
@@ -96,30 +98,31 @@
 					<h3 class="text-3xl">How far would you commute to have all this?</h3>
 					<span class="flex space-x-4 bg-white rounded p-2 border w-full">
 						<p class="flex-grow">Up to</p>
-						<select class="flex w-1/3 ">
-						<option selected value="By Foot" class="my-auto" >15 Mins</option>
-						<option value="By Foot" class="my-auto" >30 Mins</option>
-						<option value="By Foot" class="my-auto" >45 Mins</option>
-						<option value="By Foot" class="my-auto" >60 Mins</option>
+						<select class="flex w-1/3" name="commute_length">
+						<option selected value="15 Mins" class="my-auto" >15 Mins</option>
+						<option value="30 Mins" class="my-auto" >30 Mins</option>
+						<option value="45 Mins" class="my-auto" >45 Mins</option>
+						<option value="60 Mins" class="my-auto" >60 Mins</option>
 						</select>
 						
-						<select class="flex w-1/3" >
+						<select class="flex w-1/3" name="commute_method" >
 						<option value="By Foot" class="my-auto" >By Foot</option>
-						<option selected value="By Foot" class="my-auto" >By Bike</option>
-						<option value="By Foot" class="my-auto" >By Car</option>
-						<option value="By Foot" class="my-auto" >By Public Transport</option>
+						<option selected value="By Bike" class="my-auto" >By Bike</option>
+						<option value="By Car" class="my-auto" >By Car</option>
+						<option value="By Public Transport" class="my-auto" >By Public Transport</option>
 						</select>
 					</span>
 
 					<p> from </p>
+
 					<input class="bg-white rounded p-2 border 
-					w-full " type="text" name="" placeholder="Address 1">
-					<input class="bg-white rounded p-2 border w-full " type="text" name="" placeholder="Address 2">
-					<input class="bg-white rounded p-2 border w-full " type="text" name="" placeholder="Town">
-					<input class="bg-white rounded p-2 border w-full " type="text" name="" placeholder="Postcode">
+					w-full " type="text" name="adr1" placeholder="Address 1">
+					<input class="bg-white rounded p-2 border w-full " type="text" name="adr2" placeholder="Address 2">
+					<input class="bg-white rounded p-2 border w-full " type="text" name="town" placeholder="Town" required>
+					<input class="bg-white rounded p-2 border w-full " type="text" name="postcode" placeholder="Postcode">
 					
 				
-				<input type="submit" value="Next" class="bg-black px-4 py-2 rounded-full text-white cursor-pointer">
+				<input type="submit" value="Next" class="bg-green-500 px-4 py-2 rounded-full text-white cursor-pointer">
 				<a onclick="back()" class="underline text-black cursor-pointer text-sm"> Back </a>
 			</form>
 
@@ -128,27 +131,33 @@
 					
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2"> Name </p>
-						<input type="text" name="type" value="" class="my-auto flex-grow" >
+						<input type="fname" name="name" value="" class="my-auto flex-grow" required >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
 						<p class="px-2"> Email </p>
-						<input type="text" name="type" value="" class="my-auto flex-grow" >
+						<input type="Email" name="email" value="" class="my-auto flex-grow" required >
 					</label>
 					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
-						<input type="checkbox" name="type" value="" class="my-auto flex-grow p-2" >
+						<p class="px-2"> Phone </p>
+						<input type="tel" name="phone" value="" class="my-auto flex-grow" >
+					</label>
+					<label class="flex space-x-4 bg-white rounded p-2 border justify-between">
+						<input type="checkbox" name="opt in" value="" class="my-auto flex-grow p-2" >
 						<p class="text-xs max-w-sm px-4"> Yes, I want you to get in touch. I have come this far haven't I?! </p>
 						
 						
 					</label>
 				
 				<input type="hidden" name="done" value="true">
-				<input type="submit" value="Submit" class="bg-black px-4 py-2 rounded-full text-white cursor-pointer">
+				<input type="submit" value="Submit" class="bg-green-500 px-4 py-2 rounded-full text-white cursor-pointer">
 				<a onclick="back()" class="underline text-black cursor-pointer text-sm"> Back </a>
 			</form>
 
 		</div>
 	</div>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=XXXXXXXXXXXXXXXXXXXXXXXXX&libraries=places&callback=initAutocomplete" async defer></script>
 
 <script type="text/javascript">
 	let session = localStorage.getItem('session')
@@ -194,13 +203,12 @@
 
         var body = await response.json();
         if(body.done){
-        	localStorage.clear()
+        	localStorage.setItem('progress', 0)
         	return location.href = "/"
         }
         if(body.success){
         	return next()
         }
 	}
-
 
 </script>

@@ -19,22 +19,10 @@
 								</div>
 								<p id="text09"><span><strong>Pricing:</strong></span><br /><span>Each 4hr Workslot : £32.50 | <em>LAB</em> Workspace Membership : £495/month</span><br /><br /><span>Morning 10am-2pm | Afternoon 2pm-6pm | Evening 6pm - 10pm | 7 Days A Week</span><br /><br /><span>A <em>LAB</em> Workspace Membership gives you 6x4hr slots per week to allocate in the bookings diary as you choose. Thats 3 full days of development onsite per week!</span><br /><br /><span>Not for you? <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;%74%6f%6d%40%74%74%63%72%65%61%74%69%76%65%2e%6c%69%6d%69%74%65%64">Tell us why.</a></span></p>
 								<p id="text06"><strong>Capacity is limited</strong> - If you would like to secure a <em>LAB</em> we ask for a £1 deposit to save your space.</p>
-								<div id="widget01" class="stripe-checkout"><button>I'm Interested!</button></div>
-								<script>
-									document.querySelector('#widget01 > button').addEventListener('click', function() {
-										Stripe('pk_live_51H3MeNA2JQlRN2RHK86GbgAclB1ITBU10quHLVhJTbP4HT7TSsqu1gouQopU2PIJ8dsPfhT79w2cMPteOKbtFhLH00Q4alikEs').redirectToCheckout({
-											lineItems: [{ price: 'price_1IOnyfA2JQlRN2RHzYZ8DPoz', quantity: 1 }],
-											submitType: 'pay',
-											mode: 'payment',
-											billingAddressCollection: 'required',
-											successUrl: 'https://makerlab.ttcreative.limited/#done',
-											cancelUrl: 'https://makerlab.ttcreative.limited',
-										}).then(function (result) {
-											if (result.error)
-												alert('Error: ' + result.error.message);
-										});
-									});
-								</script>
+								
+								<div id="" class="">
+									<button onclick="logAction()" class="bg-green-500 px-4 py-2 rounded-full text-white cursor-pointer font-mono">I'm Interested!</button>
+								</div>
 								<ul id="links01" class="links">
 									<li class="n01">
 										<a href="https://ttcreative.limited">We thank you for supporting us by securing your spot at Do It LAB - Tom &amp; Jasper | TT Creative</a>
@@ -50,23 +38,32 @@
 					</div>
 				</div>
 			</section>
-			<section id="done-section">
-				<div id="container02" class="container default full screen">
-					<div class="wrapper">
-						<div class="inner">
-							<h2 id="text05">Thank You</h2>
-							<p id="text04">We are excited for you to join us so you will likely hear from us soon with an update.</p>
-							<ul id="buttons01" class="buttons">
-								<li>
-									<a href="#" class="button n01">Back</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</section>
 		</div>
 	</div>
 </div>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="assets/main.js"></script>
+<script type="text/javascript">
+	let session = localStorage.getItem('session')
+	if(!session) {
+		session = Math.random().toString().slice(-10)
+		localStorage.setItem('session', session)
+	}
+
+	let logAction = async () => {
+		
+		var response = await fetch("/submit" , {
+          method: 'POST',
+          headers: {
+          'Content-Type' : 'application/json'
+          },
+          body: JSON.stringify({ session : session, paymentIntent : true })
+        });
+
+        var body = await response.json();
+
+        if(body.success){
+        	return window.open("https://buy.stripe.com/28ocNj9GectJ7y8fZ3")
+        }
+	}
+</script>
