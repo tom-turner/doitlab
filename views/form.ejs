@@ -190,6 +190,7 @@
 	}
 
 	let submitForm = async (form) => {
+		event.preventDefault();
 		let formData = new FormData(form)
 		formData.append('session', session)
 
