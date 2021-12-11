@@ -53,6 +53,11 @@ app.get('/login', (req, res) => {
  	res.render('login.ejs', {title : 'Login'})
 });
 
+app.get('/*', (req, res) => {
+ 	res.render('404.ejs', {title : '404 Page'})
+});
+
+
 app.post('/submit', async (req, res) => {
 
 	db.set(req.body.session, req.body)
