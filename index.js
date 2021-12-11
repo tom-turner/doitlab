@@ -6,16 +6,10 @@ const PORT = process.env.PORT || 5000;
 const path = require("path");
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser')
-const sqlite3 = require('sqlite3').verbose();
+const Database = require('./lib/database')
+const db = new Database('db/database.csv')
 
 let adminAuth = 'password'
-let dbFilePath = 'db/doitlab.db'
-let db = new sqlite3.Database( dbFilePath, sqlite3.OPEN_READWRITE, (err) => {
-  if (err) {
-    console.error(err.message);
-  }
-  console.log('Connected to the database.');
-});
 
 app.use(bodyParser.json())
 app.use(session({ secret: adminAuth}))
@@ -57,9 +51,8 @@ app.get('/login', (req, res) => {
  	res.render('login.ejs', {title : 'Login'})
 });
 
-app.post('/submit', (req, res) => {
+app.post('/submit', async (req, res) => {
 	console.log('form submited', req.body)
-
 
 	if(req.body.done){
 		return res.json({ done : true })
