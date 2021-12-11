@@ -14,7 +14,11 @@ const csv = new CSV()
 let adminAuth = 'password'
 
 app.use(bodyParser.json())
-app.use(session({ secret: adminAuth}))
+app.use(session({
+	secret: adminAuth,
+	resave: true,
+	saveUninitialized: true
+}))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
 app.set('layout', 'application');
