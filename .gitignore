@@ -6,7 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Exports 
-/exports/*
 
 # Runtime data
 pids
